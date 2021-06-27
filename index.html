@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Cryptobot</title>
+	</head>
+	<h1>Crypto bot</h1>
+	<div id="chart"></div>
+	<div id="trades"></div>
+	<div id="settings">
+		<input type="checkbox"/>
+		<span>RSI</span>
+		<input type="text" id="rsi_length" name="rsi_length" value="14"/>
+		<span>Overbought</span>
+		<input type="text" id="rsi_overbought" name="rsi_overbought" value="70">
+		<span>Oversold</span>
+		<input type="text" id="rsi_oversold" name="rsi_oversold" value="30">
+	</div>
+
+	
+
+	<body>
+		<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+		<script src="main.js"></script>
+		<script src="chart.js"></script>
+	</body>
+</html>
