@@ -12,3 +12,5 @@ lineSeries.setData([
 	    { time: '2019-04-19', value: 81.89 },
 	    { time: '2019-04-20', value: 74.43 },
 ]);
+
+

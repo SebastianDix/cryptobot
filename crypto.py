@@ -1,8 +1,20 @@
 #!python
 import os
 import csv
+import numpy
+from numpy import genfromtxt
+import talib
 from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
 from pprint import pprint as pp
+
+my_data = genfromtxt("/home/sebastiandix/Documents/1_year_klines.csv")
+my_data = genfromtxt("15_min_klines.csv")
+one_thousand = genfromtxt("/home/sebastiandix/Documents/one_thousand_lines_of_klines.csv")
+close = one_thousand[:,4]
+moving_average = talib.SMA(close)
+rsi = talib.RSI(close)
+pp(rsi)
+exit()
 currency_pair = 'BTCUSDT'
 api_key=os.environ.get('api_key')
 api_secret=os.environ.get('api_secret')
@@ -30,3 +42,4 @@ with open('1_year_klines.csv', 'w', newline='') as csvfile:
 # get all symbol prices
 # prices = client.get_all_tickers()
 # pp(prices)
+
