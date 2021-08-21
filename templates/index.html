@@ -23,10 +23,13 @@
 				<div class="col col-auto d-flex flex-column">
 					{% for balance in balances %}
 					<div class="row">
-						<div class="col" id="{{ balance['asset'] }}-label">{{ balance['asset'] }}</div>
-						<div class="col" id="{{ balance['asset'] }}">{{ balance['free'] }}</div>
+						<div class="col" id="{{ balance[0] }}-label">{{ balance[0] }}</div>
+						<div class="col" id="{{ balance[0] }}">{{ balance[1] }}</div>
 					</div>
 					{% endfor %}
+					<div class="row">
+						<div class="col">{{ total }}</div>
+					</div>
 				</div>
 			</div>
 			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

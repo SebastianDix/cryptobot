@@ -1,20 +1,14 @@
 #!python
 import os
-import csv
-import numpy
-from numpy import genfromtxt
-import talib
 from binance import Client, ThreadedWebsocketManager, ThreadedDepthCacheManager
 from pprint import pprint as pp
 from pprint import pformat as pf
-from flask import Flask, render_template, url_for
 from operator import itemgetter # helps sort list of tuples faster than lambda, see https://stackoverflow.com/questions/3121979/how-to-sort-a-list-tuple-of-lists-tuples-by-the-element-at-a-given-index
 from forex_python.converter import CurrencyRates
 
 import time
 start_time = time.time()
 
-app = Flask(__name__)
 def vdir(obj):
     return pf([x for x in dir(obj) if not x.startswith('__')])
 
@@ -84,32 +78,3 @@ class Wallet:
     def get_total_czk_value(self):
         return sum(map(lambda x: x[1],self.get_czk_values()))
 
-B = Binance()
-# pp(B.client.get_deposit_history())
-    pp(B.client.get_my_trades(symbol="LTCDOWNUSDT"))
-# pp(B.client.get_aggregate_trades(symbol="EOSUSDT"))
-
-
-# pp(list(gen_assets(balances)))
-# pp(list(get_usdt_values(tickers)))
-
-# print(tuple(asset for asset in showNonZeroBalances(balances)))
-# getEurPriceForAsset("EOS",tickers=tickers)
-
-# balances.sort(key=itemgetter(2))
-
-print(round(time.time() - start_time,6), "seconds")
-exit()
-
-@app.route('/')
-def index():
-    lRound = lambda t: (t[0],round(t[1]))
-    unrounded = Wallet(Binance()).get_czk_values()
-    rounded = list(map(lRound,unrounded))
-    total = sum(map(lambda x: x[1],unrounded))
-    print(total)
-
-    return render_template("index.html",balances=rounded,total=total)
-
-if __name__ == '__main__':
-    app.run(debug=True)
